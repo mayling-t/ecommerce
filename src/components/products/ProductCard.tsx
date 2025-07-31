@@ -4,6 +4,15 @@ import { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
 import { Button } from '../ui/Button';
 
+// ✅ Solo mostramos productos que son de la panadería (para ocultar los del backend de tu compañero)
+const productosPermitidos = [
+  'Pan francés',
+  'Croissant de chocolate',
+  'Empanada de pollo',
+  'Pan de la abuela',
+  'Pastel de frutas',
+];
+
 interface ProductCardProps {
   product: Product;
   onClick?: () => void;
@@ -11,6 +20,11 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const { dispatch } = useCart();
+
+  // 🚫 Si no es uno de tus productos ficticios, no se muestra nada
+  if (!productosPermitidos.includes(product.name)) {
+    return null;
+  }
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
