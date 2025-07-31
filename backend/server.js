@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 const User = require('./models/User');
 const cartRoutes = require('./routes/cartRoutes');
-const mercadopago = require('mercadopago'); // <--- AÑADIDO
+const mercadopago = require('mercadopago');
 const paymentRoutes = require('./routes/paymentRoutes');
 
 dotenv.config();
@@ -14,12 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use('/', require('./routes/paymentRoutes'));
 
-
 mercadopago.configure({
   access_token: process.env.MERCADOPAGO_ACCESS_TOKEN
 });
-
-
 
 // === RUTAS DEL BACKEND ===
 app.use('/api/auth', require('./routes/authRoutes'));
@@ -40,9 +37,9 @@ app.post('/create_preference', async (req, res) => {
     const preference = await mercadopago.preferences.create({
       items,
       back_urls: {
-        success: "https://apicultura-nnxr.onrender.com/success",
-        failure: "https://apicultura-nnxr.onrender.com/failure",
-        pending: "https://apicultura-nnxr.onrender.com/pending"
+        success: "https://ecommerce-production-c45a.up.railway.app/success",
+        failure: "https://ecommerce-production-c45a.up.railway.app/failure",
+        pending: "https://ecommerce-production-c45a.up.railway.app/pending"
       },
       auto_return: "approved"
     });
@@ -65,7 +62,6 @@ const PORT = process.env.PORT || 5000;
 sequelize.sync({ alter: true }).then(async () => {
   console.log('DB sincronizada');
 
-  // Crear usuario admin si no existe
   const admin = await User.findOne({ where: { email: 'admin@demo.com' } });
   if (!admin) {
     await User.create({
