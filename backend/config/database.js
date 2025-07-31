@@ -7,15 +7,14 @@ const sequelize = new Sequelize(
   process.env.DB_PASS,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432,
-    dialect: 'postgres',
+    port: process.env.DB_PORT || 3306, // Puerto por defecto de MySQL
+    dialect: 'mysql',
+    logging: false,
     dialectOptions: {
       ssl: {
-        require: true,       // Obliga a usar SSL
-        rejectUnauthorized: false // Permite certificados autogenerados
+        rejectUnauthorized: true
       }
-    },
-    logging: false
+    }
   }
 );
 
