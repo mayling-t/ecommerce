@@ -9,12 +9,12 @@ export const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <Hexagon className="h-8 w-8 text-primary-500 mr-2" />
-              <span className="text-xl font-serif font-semibold">MielDorada</span>
+          
+              <span className="text-xl font-serif font-semibold">La Sinfonía del Pan</span>
             </div>
             <p className="text-secondary-300 text-sm leading-relaxed">
-              Productos de apicultura premium, cosechados con amor y respeto por la naturaleza. 
-              Más de 20 años de experiencia nos respaldan.
+              Productos de panadería premium, elaborados con amor y respeto por la tradición. 
+              Más de 30 años de experiencia nos respaldan.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-secondary-400 hover:text-primary-500 transition-colors">
@@ -41,17 +41,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Products */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Productos</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-secondary-300 hover:text-primary-500 transition-colors">Miel Natural</a></li>
-              <li><a href="#" className="text-secondary-300 hover:text-primary-500 transition-colors">Jalea Real</a></li>
-              <li><a href="#" className="text-secondary-300 hover:text-primary-500 transition-colors">Propóleo</a></li>
-              <li><a href="#" className="text-secondary-300 hover:text-primary-500 transition-colors">Cera de Abeja</a></li>
-              <li><a href="#" className="text-secondary-300 hover:text-primary-500 transition-colors">Polen</a></li>
-            </ul>
-          </div>
+         
 
           {/* Contact Info */}
           <div>
@@ -66,7 +56,7 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-primary-500 flex-shrink-0" />
-                <span className="text-secondary-300 text-sm">+56 9 1234 5678</span>
+                <span className="text-secondary-300 text-sm">+56 9 12 5678</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary-500 flex-shrink-0" />

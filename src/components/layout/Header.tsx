@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Search, ShoppingCart, User, Menu, X, Hexagon } from 'lucide-react';
+import { ShoppingCart, User, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../ui/Button';
-import { Modal } from '../ui/Modal';
 import { AuthModal } from '../auth/AuthModal';
 import { CartModal } from '../cart/CartModal';
-import { categories } from '../../data/products';
 
 export const Header: React.FC = () => {
   const { state } = useCart();
@@ -14,13 +12,6 @@ export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Implement search functionality
-    console.log('Searching for:', searchQuery);
-  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-40">
@@ -29,9 +20,8 @@ export const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <Hexagon className="h-8 w-8 text-primary-500 mr-2" />
               <span className="text-xl font-serif font-semibold text-secondary-900">
-                MielDorada
+                La Sinfonía del Pan
               </span>
             </div>
           </div>
@@ -41,24 +31,6 @@ export const Header: React.FC = () => {
             <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors">
               Inicio
             </a>
-            <div className="relative group">
-              <button className="text-secondary-700 hover:text-primary-600 transition-colors">
-                Productos
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="py-2">
-                  {categories.map((category) => (
-                    <a
-                      key={category.id}
-                      href={`#category-${category.id}`}
-                      className="block px-4 py-2 text-sm text-secondary-700 hover:bg-primary-50 hover:text-primary-600"
-                    >
-                      {category.name} ({category.count})
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
             <a href="#about" className="text-secondary-700 hover:text-primary-600 transition-colors">
               Nosotros
             </a>
@@ -66,22 +38,6 @@ export const Header: React.FC = () => {
               Contacto
             </a>
           </nav>
-
-          {/* Search Bar */}
-          <div className="hidden lg:flex flex-1 max-w-md mx-8">
-            <form onSubmit={handleSearch} className="w-full">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Buscar productos..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                />
-                <Search className="absolute left-3 top-2.5 h-5 w-5 text-secondary-400" />
-              </div>
-            </form>
-          </div>
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
@@ -150,25 +106,8 @@ export const Header: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-secondary-200">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <div className="mb-4">
-                <form onSubmit={handleSearch}>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Buscar productos..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                    />
-                    <Search className="absolute left-3 top-2.5 h-5 w-5 text-secondary-400" />
-                  </div>
-                </form>
-              </div>
               <a href="#" className="block px-3 py-2 text-secondary-700 hover:text-primary-600">
                 Inicio
-              </a>
-              <a href="#products" className="block px-3 py-2 text-secondary-700 hover:text-primary-600">
-                Productos
               </a>
               <a href="#about" className="block px-3 py-2 text-secondary-700 hover:text-primary-600">
                 Nosotros
