@@ -35,7 +35,7 @@ export const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
   // FUNCIÓN PARA PROCESAR PAGO
   const handleCheckout = async () => {
     try {
-      const response = await fetch('https://apicultura-nnxr.onrender.com/create_preference', {
+      const response = await fetch('https://beautiful-reverence-production.up.railway.app/create_preference', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: state.items })
