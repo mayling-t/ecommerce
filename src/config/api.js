@@ -1,1 +1,1 @@
-export const API_URL = "https://apicultura-nnxr.onrender.com/api"; // Cambiar luego si usas hosting
+export const API_URL = "https://ecommerce-production-c45a.up.railway.app/api"; // Cambiar luego si usas hosting
