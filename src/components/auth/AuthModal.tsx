@@ -21,7 +21,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const API_URL = 'https://apicultura-nnxr.onrender.com/api/auth';
+  const API_URL = 'https://beautiful-reverence-production.up.railway.app/api/auth/login';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
