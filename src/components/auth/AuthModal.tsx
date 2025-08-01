@@ -21,7 +21,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const API_URL = 'https://beautiful-reverence-production.up.railway.app/api/auth/login';
+  const API_URL = 'https://beautiful-reverence-production.up.railway.app/api/auth';
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
